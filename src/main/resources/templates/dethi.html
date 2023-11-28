@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="utf-8">
+	<title>Luyện thi trắc nghiệm trực tuyến</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<meta content="Free HTML Templates" name="keywords">
+	<meta content="Free HTML Templates" name="description">
+	<!-- Favicon -->
+	<link href="/img/favicon.ico" rel="icon">
+
+	<!-- Google Web Fonts -->
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+		rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+	<!-- Libraries Stylesheet -->
+
+	<!-- Customized Bootstrap Stylesheet -->
+	<link href="/css/style.css" rel="stylesheet">
+	<style>
+		img {
+			width: 150px;
+		}
+
+		.tenmonhoc,
+		.img {
+			text-align: center;
+			font-weight: bold
+		}
+
+		.btn {
+			align-items: center;
+		}
+
+		h4 {
+			color: #0082b9;
+			font-weight: 600;
+			font-size: 18px;
+
+		}
+	</style>
+
+
+</head>
+
+<body>
+	<!-- HEADER -->
+	<div th:replace="header.html"></div>
+
+	<div class="container-fluid mb-5">
+		<div class="row border-top px-xl-5">
+			<!-- Navbar Start -->
+			<div th:replace="nav.html"></div>
+			<div class="col-lg-9">
+				<div th:replace="nav1.html"></div>
+				<!-- Navbar End -->
+
+				<!--ARTICLE ở đây -->
+				<div class="border box" style="background-color: #EEEEEE">
+
+					<th:block th:each="item : ${boDeList}">
+						<div class="container mt-3 mb-3">
+							<div class="media border p-3" style="background-color: white">
+								<div class="media-body">
+									<h4>
+										<i>Đề thi Trung học phổ thông quốc gia</i> <i th:text="${item.tenDe}"></i>
+									</h4>
+									<hr>
+
+									<div class="row">
+										<p class="col-sm-3">
+											<i class="far fa-file-alt"></i> 50 câu
+										</p>
+										<p class="col-sm-3">
+											<i class="far fa-edit"></i> 30 lượt thi
+										</p>
+										<p class="col-sm-3">
+											<i class="far fa-calendar"></i> 11/9/2020
+										</p>
+										<!-- Sử dụng th:onclick để gọi hàm selectSubject với tham số là giá trị filemon từ cơ sở dữ liệu -->
+
+
+									</div>
+									<p class="col-sm-3">
+										<a href="/xacnhan" class="btn btn-warning"
+											th:attr="data-tenmon=${item.tenDe},data-filemon=${item.monHoc.getFilemon()}"
+											onclick="selectSubject(this.getAttribute('data-tenmon'),this.getAttribute('data-filemon'))">Click
+											here</a>
+
+
+									</p>
+								</div>
+							</div>
+						</div>
+					</th:block>
+
+
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+
+
+	<!-- Footer Start -->
+	<div th:replace="footer.html"></div>
+	<!-- Footer End -->
+
+
+	<!-- Back to Top -->
+	<a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+
+
+	<!-- JavaScript Libraries -->
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+
+	<script>
+		function selectSubject(tende, filemon) {
+			console.log("Giá trị tende: " + tende);
+			console.log("Giá trị filemon: " + filemon);
+			// Lưu tên môn học được chọn vào localStorage
+			localStorage.setItem('selectetende', tende);
+			localStorage.setItem('selectedSubject', filemon);
+			// Hiển thị giá trị đã chọn trong console
+			console.log("Đã chọn đề: " + localStorage.getItem('selectetende'));
+			console.log("Đã chọn môn học: " + localStorage.getItem('selectedSubject'));
+			// Chuyển hướng người dùng đến trang quiz.html
+			window.location.href = '/quiz';
+		}
+	</script>
+	<!-- Contact Javascript File -->
+
+
+	<!-- Template Javascript -->
+
+
+
+
+
+</body>
+
+</html>
