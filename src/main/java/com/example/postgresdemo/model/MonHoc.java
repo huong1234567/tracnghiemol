@@ -21,6 +21,7 @@ public class MonHoc implements Serializable {
     String id;
     @Column(columnDefinition = "nvarchar(255)")
     String tenMonHoc;
+
     @Column(columnDefinition = "nvarchar(255)")
     String hinhAnh;
     String thoigian;

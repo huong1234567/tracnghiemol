@@ -88,8 +88,8 @@
 									</div>
 									<p class="col-sm-3">
 										<a href="/xacnhan" class="btn btn-warning"
-											th:attr="data-tenmon=${item.tenDe},data-filemon=${item.monHoc.getFilemon()}"
-											onclick="selectSubject(this.getAttribute('data-tenmon'),this.getAttribute('data-filemon'))">Click
+											th:attr="data-id=${item.idDe},data-filemon=${item.monHoc.getFilemon()},data-thoigian=${item.monHoc.getThoigian()}"
+											onclick="selectSubject(this.getAttribute('data-id'),this.getAttribute('data-filemon'),this.getAttribute('data-thoigian'))">Click
 											here</a>
 
 
@@ -123,15 +123,18 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
 
 	<script>
-		function selectSubject(tende, filemon) {
-			console.log("Giá trị tende: " + tende);
+		function selectSubject(idDe, filemon, thoigian) {
+			console.log("Giá trị tende: " + idDe);
 			console.log("Giá trị filemon: " + filemon);
+			console.log("Giá trị thời gian: " + thoigian);
 			// Lưu tên môn học được chọn vào localStorage
-			localStorage.setItem('selectetende', tende);
+			localStorage.setItem('selectetende', idDe);
 			localStorage.setItem('selectedSubject', filemon);
+			localStorage.setItem('selectthoigian', thoigian);
 			// Hiển thị giá trị đã chọn trong console
 			console.log("Đã chọn đề: " + localStorage.getItem('selectetende'));
 			console.log("Đã chọn môn học: " + localStorage.getItem('selectedSubject'));
+			console.log("Đã chọn thời gian là: " + localStorage.getItem('selectthoigian'));
 			// Chuyển hướng người dùng đến trang quiz.html
 			window.location.href = '/quiz';
 		}

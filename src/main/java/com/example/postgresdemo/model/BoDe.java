@@ -17,8 +17,15 @@ import org.springframework.stereotype.Service;
 public class BoDe implements Serializable {
 
 	@Id
-	@Column(columnDefinition = "nvarchar(255)")
+	@Column(columnDefinition = "varchar(255)")
 	String idBoDe;
+
+	@Column(columnDefinition = "nvarchar(255)")
+	String idDe;
+
+	public BoDe(String idDe) {
+		this.idDe = idDe;
+	}
 
 	@Column(columnDefinition = "nvarchar(255)")
 	String tenDe;
@@ -59,6 +66,14 @@ public class BoDe implements Serializable {
 
 	public void setMonHoc(MonHoc monHoc) {
 		this.monHoc = monHoc;
+	}
+
+	public String getIdDe() {
+		return idDe;
+	}
+
+	public void setIdDe(String idDe) {
+		this.idDe = idDe;
 	}
 
 }
