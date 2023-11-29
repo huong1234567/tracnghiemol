@@ -76,7 +76,7 @@ public class controller {
         return "index";
     }
 
-    @RequestMapping("/listdethi")
+    @RequestMapping("/dethi")
     public String showlistdethi(Model model) {
         List<BoDe> boDeList = bddao.findAll();
         model.addAttribute("boDeList", boDeList);
@@ -86,12 +86,12 @@ public class controller {
 
     @RequestMapping("/xacnhan")
     public String showBatdauthi(Model model) {
-        return "xacnhan";
+        return "xacNhan";
     }
 
     // Search and Pagination
 
-    @RequestMapping("/listdethi/search")
+    @RequestMapping("/search")
     public String searchAndPage(Model model,
             @RequestParam("keywords") Optional<String> kw) {
         String kwords = kw.orElse(session.get("keywords", ""));
@@ -100,13 +100,13 @@ public class controller {
         List<BoDe> items = bddao.findAllByTenDeLike("%" + kwords + "%");
         model.addAttribute("search", items);
         addMonHocListToModel(model);
-        return "listdethi";
+        return "dethi";
     }
 
-    @RequestMapping("/bodethi")
-    public String bodethi() {
-        return "bodethi";
-    }
+    // @RequestMapping("/bodethi")
+    // public String bodethi() {
+    // return "bodethi";
+    // }
 
     @RequestMapping("/indexAd")
     public String index1() {

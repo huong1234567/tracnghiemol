@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 public class BoDe implements Serializable {
 
 	@Id
-	@Column(columnDefinition = "varchar(255)")
+	@Column(columnDefinition = "nvarchar(255)")
 	String idBoDe;
 
 	@Column(columnDefinition = "nvarchar(255)")
