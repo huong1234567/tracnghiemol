@@ -60,7 +60,8 @@
 						<div ng-controller="myctrl">
 							<form name="myform">
 								<h3 class="text-danger font-weight-bold-small px-3 mr-1 " style="text-align: center">Đề
-									thi THPT quốc gia <i th:text="${selectten}"></h3>
+									thi THPT quốc gia <span id="ten" th:text="${ten1}"></span>
+								</h3>
 
 								<div id="countdown" style="text-align: center">
 									Thời gian làm bài: <span id="timeLeft" th:text="${timeq}"></span>
@@ -129,7 +130,9 @@
 		<script>
 			// Lấy thời gian ban đầu từ localStorage
 			var selectedThoiGian = localStorage.getItem('selectthoigian');
-			var selectten = localStorage.getItem('selectetende');
+			var selectten = localStorage.getItem('selecteten');
+			var ten1 = selectten;
+			document.getElementById("ten").innerHTML = ten1;
 
 
 			// Sử dụng giá trị thời gian để hiển thị trong trang quiz

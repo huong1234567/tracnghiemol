@@ -75,6 +75,18 @@ public class controller {
         return "dethi";
     }
 
+    @RequestMapping("/search")
+    public String searchAndPage(Model model,
+            @RequestParam("keywords") Optional<String> kw) {
+        String kwords = kw.orElse(session.get("keywords", ""));
+        session.set("keywords", kwords);
+        // Pageable pageable = PageRequest.of(p.orElse(0), 6);
+        List<BoDe> items = bddao.findAllByTenDeLike("%" + kwords + "%");
+        model.addAttribute("search", items);
+        addMonHocListToModel(model);
+        return "dethi";
+    }
+
     @RequestMapping("/index")
     public String index(Model model) {
         addMonHocListToModel(model);
@@ -92,18 +104,6 @@ public class controller {
     public String showlistdethi(Model model) {
         List<BoDe> boDeList = bddao.findAll();
         model.addAttribute("boDeList", boDeList);
-        addMonHocListToModel(model);
-        return "dethi";
-    }
-
-    @RequestMapping("/search")
-    public String searchAndPage(Model model,
-            @RequestParam("keywords") Optional<String> kw) {
-        String kwords = kw.orElse(session.get("keywords", ""));
-        session.set("keywords", kwords);
-        // Pageable pageable = PageRequest.of(p.orElse(0), 6);
-        List<BoDe> items = bddao.findAllByTenDeLike("%" + kwords + "%");
-        model.addAttribute("search", items);
         addMonHocListToModel(model);
         return "dethi";
     }
@@ -203,9 +203,10 @@ public class controller {
         }
     }
 
-    @GetMapping("/forgot-password")
+    // forgot pass
+    @GetMapping("/quenmatkhau")
     public String change(Model model) {
-        return "forgot-password";
+        return "quenMatKhau";
     }
 
     private void send(String to, String subject, String body) throws MessagingException {
@@ -214,7 +215,6 @@ public class controller {
         helper.setTo(to);
         helper.setSubject(subject);
         helper.setText(body, true);
-
         javaMailSender.send(message);
     }
 
@@ -230,7 +230,7 @@ public class controller {
 
     String randomCode = generateRandomCode();
 
-    @PostMapping("/forgot-password")
+    @PostMapping("/quenmatkhau")
     public String forgotPassword(@RequestParam("email") String email, HttpServletRequest request, Model model) {
         NguoiDung foundAccount = nddao.findByEmail(email);
         if (foundAccount != null) {
@@ -251,8 +251,28 @@ public class controller {
             return "result";
         } else {
             model.addAttribute("message", "Không tìm thấy địa chỉ email trong hệ thống.");
-            return "forgot-password";
+            return "quenmatkhau";
         }
 
+    }
+
+    @PostMapping("/optcode")
+    public String handleVerificationCode(@RequestParam("optcode") String verificationCode, HttpServletRequest request,
+            Model model) {
+        // Kiểm tra xem mã nhập từ form có trùng với mã đã gửi đi hay không
+        String userEmail = (String) request.getSession().getAttribute("userEmail");
+
+        if (verificationCode.equals(randomCode)) {
+
+            model.addAttribute("userEmail", userEmail);
+            model.addAttribute("message", "Xác nhận thành công!");
+
+            return "redirect:/doimatkhau"; // Chuyển hướng
+        } else {
+
+            model.addAttribute("message", "Mã xác nhận không đúng. Vui lòng thử lại.");
+
+            return "user/result"; // Hoặc trang nào bạn muốn quay lại để nhập lại mã
+        }
     }
 }
