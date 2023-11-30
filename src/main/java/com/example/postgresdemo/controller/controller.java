@@ -1,16 +1,18 @@
 package com.example.postgresdemo.controller;
 
+import java.security.SecureRandom;
 import java.util.List;
 import java.util.Optional;
 
+import javax.mail.MessagingException;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,6 +48,9 @@ public class controller {
     @Autowired
     BoDe bd;
 
+    @Autowired
+    JavaMailSender javaMailSender;
+
     @RequestMapping("/quizls")
     public String quizls() {
         return "quizls";
@@ -76,6 +81,13 @@ public class controller {
         return "index";
     }
 
+    @RequestMapping("/xacnhan")
+    public String showBatdauthi(Model model) {
+        return "xacNhan";
+    }
+
+    // Search and Pagination
+
     @RequestMapping("/dethi")
     public String showlistdethi(Model model) {
         List<BoDe> boDeList = bddao.findAll();
@@ -83,13 +95,6 @@ public class controller {
         addMonHocListToModel(model);
         return "dethi";
     }
-
-    @RequestMapping("/xacnhan")
-    public String showBatdauthi(Model model) {
-        return "xacNhan";
-    }
-
-    // Search and Pagination
 
     @RequestMapping("/search")
     public String searchAndPage(Model model,
@@ -198,4 +203,56 @@ public class controller {
         }
     }
 
+    @GetMapping("/forgot-password")
+    public String change(Model model) {
+        return "forgot-password";
+    }
+
+    private void send(String to, String subject, String body) throws MessagingException {
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(body, true);
+
+        javaMailSender.send(message);
+    }
+
+    private String generateRandomCode() {
+        // Sử dụng SecureRandom để tạo số ngẫu nhiên
+        SecureRandom random = new SecureRandom();
+
+        // Tạo một số ngẫu nhiên có độ dài là 6
+        int randomCode = 100000 + random.nextInt(900000);
+
+        return String.valueOf(randomCode);
+    }
+
+    String randomCode = generateRandomCode();
+
+    @PostMapping("/forgot-password")
+    public String forgotPassword(@RequestParam("email") String email, HttpServletRequest request, Model model) {
+        NguoiDung foundAccount = nddao.findByEmail(email);
+        if (foundAccount != null) {
+            try {
+                // Tạo mã ngẫu nhiên
+
+                // Đặt chủ đề và nội dung của email
+                String subject = "Quên mật khẩu";
+                String body = "Mã xác nhận của bạn là: " + randomCode;
+
+                // Gửi email
+                send(email, subject, body);
+            } catch (Exception e) {
+                e.printStackTrace(); // Xử lý lỗi gửi email
+            }
+            request.getSession().setAttribute("userEmail", email);
+            model.addAttribute("message", "Gửi mã thành công");
+            return "result";
+        } else {
+            model.addAttribute("message", "Không tìm thấy địa chỉ email trong hệ thống.");
+            return "forgot-password";
+        }
+
+    }
 }
