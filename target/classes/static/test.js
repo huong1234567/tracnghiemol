@@ -40,6 +40,7 @@ sv.questionNumber = index + 1; // Số thứ tự bắt đầu từ 1
 
 
 
+
 $scope.check = function () {
 var count = 0;
 angular.forEach($scope.users, function (sv) {
@@ -68,6 +69,21 @@ $scope.exit = function (){
 const localhostAddress = "http://localhost:1602/index"; // Thay thế 3000 bằng số cổng bạn đang sử dụng
 window.location.href = localhostAddress;
 }
+
+
+
+$scope.captureScreenshot = function () {
+html2canvas(document.getElementById('quiz-form')).then(function (canvas) {
+// Chuyển đổi canvas thành URL dữ liệu
+var imageDataUrl = canvas.toDataURL();
+
+// Tạo một cửa sổ hoặc tab mới để hiển thị ảnh
+var newWindow = window.open();
+newWindow.document.write('<img src="' + imageDataUrl + '" alt="Quiz Screenshot">');
+});
+};
+
+
 
 
 

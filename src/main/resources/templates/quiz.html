@@ -41,6 +41,9 @@
 		}
 	</script>
 
+	<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+	<!-- thư viện chụp màng hình trực tuyến -->
+
 </head>
 
 <body ng-app="myapp">
@@ -58,7 +61,7 @@
 				<div class="border box">
 					<div class="container mt-3">
 						<div ng-controller="myctrl">
-							<form name="myform">
+							<form name="myform" id="quiz-form">
 								<h3 class="text-danger font-weight-bold-small px-3 mr-1 " style="text-align: center">Đề
 									thi THPT quốc gia <span id="ten" th:text="${ten1}"></span>
 								</h3>
@@ -99,8 +102,10 @@
 										ng-bind-html="sv.nd">
 										{{sv.nd}}</div>
 								</div>
-								<input type="button" value="submit" ng-click="check()" ng-hide="submitButtonVisible" />
+								<input type="button" value="Submit" ng-click="check()" ng-hide="submitButtonVisible" />
 								<input type="button" value="Thoát" ng-click="exit()" ng-hide="!submitButtonVisible" />
+								<input type="button" value="chụp màn hình" ng-click="captureScreenshot()"
+									ng-hide="!submitButtonVisible" />
 							</form>
 						</div>
 
