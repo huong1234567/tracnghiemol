@@ -19,13 +19,13 @@ import org.springframework.stereotype.Service;
 public class MonHoc implements Serializable {
     @Id
     String id;
-    @Column(columnDefinition = "varchar(255)")
+    @Column(columnDefinition = "nvarchar(255)")
     String tenMonHoc;
 
-    @Column(columnDefinition = "varchar(255)")
+    @Column(columnDefinition = "nvarchar(255)")
     String hinhAnh;
     String thoigian;
-    @Column(columnDefinition = "varchar(255)")
+    @Column(columnDefinition = "nvarchar(255)")
     String filemon;
 
     @ManyToOne

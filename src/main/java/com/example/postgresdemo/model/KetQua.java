@@ -19,11 +19,11 @@ import org.springframework.stereotype.Service;
 public class KetQua implements Serializable {
 
 	@Id
-	@Column(columnDefinition = "varchar(255)")
+	@Column(columnDefinition = "nvarchar(255)")
 	String idBaiThi;
-	@Column(columnDefinition = "varchar(255)")
+	@Column(columnDefinition = "nvarchar(255)")
 	String diem;
-	@Column(columnDefinition = "varchar(255)")
+	@Column(columnDefinition = "nvarchar(255)")
 	String baithi;
 
 	@ManyToOne
