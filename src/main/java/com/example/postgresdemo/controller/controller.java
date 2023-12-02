@@ -16,6 +16,7 @@ import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.example.postgresdemo.dao.BoDeDAO;
 import com.example.postgresdemo.dao.MonHocDAO;
 import com.example.postgresdemo.dao.NguoiDungDAO;
+import com.example.postgresdemo.dao.NguoiDungService;
 import com.example.postgresdemo.dao.SessionService;
 import com.example.postgresdemo.model.BoDe;
 import com.example.postgresdemo.model.MonHoc;
@@ -33,6 +35,13 @@ import com.example.postgresdemo.model.NguoiDung;
 public class controller {
     @Autowired
     SessionService session;
+
+    private final NguoiDungService nguoiDungService;
+
+    @Autowired
+    public controller(NguoiDungService nguoiDungService) {
+        this.nguoiDungService = nguoiDungService;
+    }
 
     @Autowired
     NguoiDung nd;
@@ -57,9 +66,15 @@ public class controller {
     }
 
     @RequestMapping("/quiz")
-    public String quiz(Model model) {
-        addMonHocListToModel(model);
-        return "quiz";
+    public String quiz(Model model, HttpSession session) {
+        String username = (String) session.getAttribute("user");
+        if (username != null) {
+            addMonHocListToModel(model);
+            return "quiz";
+        } else {
+            model.addAttribute("error", "Đăng nhập để làm bài thi");
+            return "login";
+        }
     }
 
     private void addMonHocListToModel(Model model) {
@@ -89,12 +104,14 @@ public class controller {
 
     @RequestMapping("/index")
     public String index(Model model) {
+
         addMonHocListToModel(model);
         return "index";
     }
 
     @RequestMapping("/xacnhan")
     public String showBatdauthi(Model model) {
+
         return "xacNhan";
     }
 
@@ -135,14 +152,12 @@ public class controller {
     }
 
     @RequestMapping("/gioithieu")
-    public String about(Model model) {
-        addMonHocListToModel(model);
+    public String about() {
         return "gioithieu";
     }
 
     @RequestMapping("/gopy")
-    public String gopy(Model model) {
-        addMonHocListToModel(model);
+    public String gopy() {
         return "gopy";
     }
 
@@ -157,6 +172,7 @@ public class controller {
         NguoiDung user = nddao.findByEmailOrIdND(emailOrId, emailOrId);
 
         if (user != null && user.getMatKhau().equals(matKhau)) {
+
             session.setAttribute("user", user.getHoTen());
             session.setAttribute("nguoidung", user);
             if (user.isAdmin()) {
@@ -245,6 +261,7 @@ public class controller {
 
                 // Gửi email
                 send(email, subject, body);
+                request.getSession().setAttribute("userId", foundAccount.getIdND());
             } catch (Exception e) {
                 e.printStackTrace(); // Xử lý lỗi gửi email
             }
@@ -263,10 +280,12 @@ public class controller {
             Model model) {
         // Kiểm tra xem mã nhập từ form có trùng với mã đã gửi đi hay không
         String userEmail = (String) request.getSession().getAttribute("userEmail");
+        String userId = (String) request.getSession().getAttribute("userId");
 
         if (verificationCode.equals(randomCode)) {
 
             model.addAttribute("userEmail", userEmail);
+            model.addAttribute("userId", userId);
             model.addAttribute("message", "Xác nhận thành công!");
 
             return "redirect:/doimatkhau"; // Chuyển hướng
@@ -274,7 +293,22 @@ public class controller {
 
             model.addAttribute("message", "Mã xác nhận không đúng. Vui lòng thử lại.");
 
-            return "user/result"; // Hoặc trang nào bạn muốn quay lại để nhập lại mã
+            return "result"; // Hoặc trang nào bạn muốn quay lại để nhập lại mã
         }
+    }
+
+    @GetMapping("/doimatkhau")
+    public String dmk() {
+        return "doimatkhau";
+    }
+
+    @PostMapping("/doimatkhau")
+    public String doiMatKhau(@RequestParam("mk") String newPassword,
+            HttpServletRequest request, Model model) {
+        String userId = (String) request.getSession().getAttribute("userId");
+        nguoiDungService.updatePassword(userId, newPassword);
+
+        model.addAttribute("message", "Đổi mật khẩu thành công!");
+        return "login";
     }
 }

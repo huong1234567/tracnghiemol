@@ -33,7 +33,7 @@ public class MonHoc implements Serializable {
     Ban Ban;
 
     @OneToMany(mappedBy = "monHoc")
-    List<BaiThi> baiThi;
+    List<KetQua> baiThi;
 
     @OneToMany(mappedBy = "monHoc")
     List<BoDe> boDe;
@@ -43,7 +43,7 @@ public class MonHoc implements Serializable {
 
     public MonHoc(String id, String tenMonHoc, String hinhAnh, String thoigian, String filemon,
             com.example.postgresdemo.model.Ban ban,
-            List<BaiThi> baiThi, List<BoDe> boDe) {
+            List<KetQua> baiThi, List<BoDe> boDe) {
         this.id = id;
         this.tenMonHoc = tenMonHoc;
         this.hinhAnh = hinhAnh;
@@ -95,11 +95,11 @@ public class MonHoc implements Serializable {
         Ban = ban;
     }
 
-    public List<BaiThi> getBaiThi() {
+    public List<KetQua> getBaiThi() {
         return baiThi;
     }
 
-    public void setBaiThi(List<BaiThi> baiThi) {
+    public void setBaiThi(List<KetQua> baiThi) {
         this.baiThi = baiThi;
     }
 

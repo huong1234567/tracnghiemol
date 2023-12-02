@@ -222,8 +222,23 @@
 			console.log("Đã chọn môn học: " + localStorage.getItem('selectedSubject'));
 			console.log("Đã chọn thời gian là: " + localStorage.getItem('selectthoigian'));
 			// Chuyển hướng người dùng đến trang quiz.html
-			window.location.href = '/quiz';
+
+			// Lấy thông tin đăng nhập từ localStorage hoặc cookie (tuỳ vào cách bạn lưu trữ)
+			var isLoggedIn = localStorage.getItem('selecteid'); // Thay 'isLoggedIn' bằng key bạn sử dụng để đánh dấu đã đăng nhập
+
+			if (isLoggedIn == null) {
+				// Nếu đã đăng nhập, chuyển hướng đến trang quiz
+				window.location.href = '/login';
+			} else {
+				// Nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
+				window.location.href = '/quiz';
+
+			}
 		}
+
+		// Gọi hàm kiểm tra đăng nhập khi trang được tải
+		checkLoginStatus();
+
 	</script>
 
 
