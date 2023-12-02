@@ -2,6 +2,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "PostgresDemoApplication",
+            "request": "launch",
+            "mainClass": "com.example.postgresdemo.PostgresDemoApplication",
+            "projectName": ""
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-PostgresDemoApplication<postgres-demo>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

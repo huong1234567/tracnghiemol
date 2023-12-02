@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Liên kết Bootstrap từ CDN -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <title>Biểu mẫu quản lý điểm</title>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Quản lý ADMIN</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- <form class="form-inline my-2 my-lg-0 ml-auto">
+            <input class="form-control mr-sm-2" type="search" placeholder="Tìm kiếm" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Tìm kiếm</button>
+          </form> -->
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Admin <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-link">|</li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Đăng xuất</a>
+        </li>
+
+      </ul>
+    </div>
+  </nav>
+  <div class="container">
+    <!-- Tạo bảng với Bootstrap -->
+    <h2 class="text-center col-sm-12 mt-2 mb-5 border bg-info text-white">Quản Lý Điểm</h2>
+
+    <table class="table table-bordered table-striped table-hover">
+      <!-- Tiêu đề bảng -->
+      <!-- Hàng đầu tiên có hai hộp chọn -->
+      <tr>
+        <!-- Hộp chọn cho môn thi -->
+        <td colspan="3">
+          <label for="subject">Môn thi:</label>
+          <select class="form-control" id="subject">
+            <option>Toán</option>
+            <option>Lý</option>
+            <option>Hóa</option>
+            <option>Văn</option>
+            <option>Anh</option>
+          </select>
+        </td>
+        <!-- Hộp chọn cho mã đề -->
+        <td colspan="4">
+          <label for="code">Mã Đề:</label>
+          <select class="form-control" id="code">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+        </td>
+      </tr>
+      <!-- Hàng thứ hai có các tiêu đề cột -->
+      <tr>
+        <!-- Tiêu đề cột STT -->
+        <th>STT</th>
+        <!-- Tiêu đề cột Họ và tên -->
+        <th>Họ và tên</th>
+        <!-- Tiêu đề cột Môn học -->
+        <th>Môn học</th>
+        <!-- Tiêu đề cột Mã đề -->
+        <th>Mã đề</th>
+        <!-- Tiêu đề cột Điểm thi -->
+        <th>Điểm thi</th>
+        <!-- Tiêu đề cột Xem chi tiết -->
+        <th>Xem chi tiết</th>
+      </tr>
+      <!-- Hàng thứ ba có dữ liệu của sinh viên thứ nhất -->
+      <tr>
+        <!-- Dữ liệu STT của sinh viên thứ nhất -->
+        <td>1</td>
+        <!-- Dữ liệu Họ và tên của sinh viên thứ nhất -->
+        <td>Nguyễn Văn A</td>
+        <!-- Dữ liệu Môn học của sinh viên thứ nhất -->
+        <td>Toán</td>
+        <!-- Dữ liệu Mã đề của sinh viên thứ nhất -->
+        <td>1</td>
+        <!-- Dữ liệu Điểm thi của sinh viên thứ nhất -->
+        <td>9.5</td>
+        <!-- Nút Xem chi tiết của sinh viên thứ nhất -->
+        <td><button type="button" class="btn btn-info btn-sm">Xem chi tiết</button></td>
+      </tr>
+      <!-- Hàng thứ tư có dữ liệu của sinh viên thứ hai -->
+      <tr>
+        <!-- Dữ liệu STT của sinh viên thứ hai -->
+        <td>2</td>
+        <!-- Dữ liệu Họ và tên của sinh viên thứ hai -->
+        <td>Trần Thị B</td>
+        <!-- Dữ liệu Môn học của sinh viên thứ hai -->
+        <td>Lý</td>
+        <!-- Dữ liệu Mã đề của sinh viên thứ hai -->
+        <td>2</td>
+        <!-- Dữ liệu Điểm thi của sinh viên thứ hai -->
+        <td>8.0</td>
+        <!-- Nút Xem chi tiết của sinh viên thứ hai -->
+        <td><button type="button" class="btn btn-info btn-sm">Xem chi tiết</button></td>
+      </tr>
+      <!-- Hàng thứ năm có dữ liệu của sinh viên thứ ba -->
+      <tr>
+        <!-- Dữ liệu STT của sinh viên thứ ba -->
+        <td>3</td>
+        <!-- Dữ liệu Họ và tên của sinh viên thứ ba -->
+        <td>Lê Văn C</td>
+        <!-- Dữ liệu Môn học của sinh viên thứ ba -->
+        <td>Hóa</td>
+        <!-- Dữ liệu Mã đề của sinh viên thứ ba -->
+        <td>3</td>
+        <!-- Dữ liệu Điểm thi của sinh viên thứ ba -->
+        <td>7.5</td>
+        <!-- Nút Xem chi tiết của sinh viên thứ ba -->
+        <td><button type="button" class="btn btn-info btn-sm">Xem chi tiết</button></td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- Liên kết Bootstrap JS từ CDN -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

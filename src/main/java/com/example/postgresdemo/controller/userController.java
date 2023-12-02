@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.example.postgresdemo.dao.MonHocDAO;
 import com.example.postgresdemo.dao.NguoiDungDAO;
+import com.example.postgresdemo.model.MonHoc;
 import com.example.postgresdemo.model.NguoiDung;
 
 @Controller
@@ -25,8 +27,17 @@ public class userController {
     @Autowired
     NguoiDungDAO ndd;
 
+    @Autowired
+    MonHocDAO mhdao;
+
+    private void addMonHocListToModel(Model model) {
+        List<MonHoc> monHocList = mhdao.findAll();
+        model.addAttribute("monHocList", monHocList);
+    }
+
     @GetMapping("/qlthongtin")
     public String showUserInfo(Model model, HttpSession session) {
+        addMonHocListToModel(model);
         NguoiDung user = (NguoiDung) session.getAttribute("nguoidung");
         if (user == null) {
             // Lấy user id từ session hoặc từ bất kỳ nguồn dữ liệu nào khác
@@ -82,5 +93,10 @@ public class userController {
         session.setAttribute("user", item.getHoTen());
 
         return "redirect:/qlthongtin";
+    }
+
+    @RequestMapping
+    public String qldiem() {
+        return "qlDiemUser";
     }
 }

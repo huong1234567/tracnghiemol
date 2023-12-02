@@ -71,7 +71,8 @@
 								<hr>
 
 								<div ng-repeat="sv in users.slice((currentPage-1)*50, currentPage*50)">
-
+									<div><b ng-bind-html="sv.para"><br></b></div>
+									<div><b ng-bind-html="sv.note"><br></b></div>
 									<div ng-bind-html="sv.ten">{{sv.ten}}<br></div>
 									<div ng-if="sv.anh">
 										<img src="{{sv.anh}}"><br>
@@ -95,12 +96,17 @@
 										<img src="{{sv.da}}"><br>
 
 									</div>
-									<div style="font-weight: bold" ng-model="sv.nd" ng-show="showExplanationnd"
-										ng-bind-html="sv.nd">
+									<div class="border bg-secondary text-success" ng-model="sv.nd"
+										ng-show="showExplanationnd" ng-bind-html="sv.nd">
 										{{sv.nd}}</div>
 								</div>
-								<input type="button" value="submit" ng-click="check()" ng-hide="submitButtonVisible" />
-								<input type="button" value="Thoát" ng-click="exit()" ng-hide="!submitButtonVisible" />
+								<div class="text-center">
+									<input class="btn btn-info mb-2 text-bolder text-white " type="button"
+										value="Nộp bài" ng-click="check()" ng-hide="submitButtonVisible" />
+									<input class="btn btn-dark mb-2" type="button" value="Thoát" ng-click="exit()"
+										ng-hide="!submitButtonVisible" />
+								</div>
+
 							</form>
 						</div>
 

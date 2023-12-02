@@ -135,12 +135,14 @@ public class controller {
     }
 
     @RequestMapping("/gioithieu")
-    public String about() {
+    public String about(Model model) {
+        addMonHocListToModel(model);
         return "gioithieu";
     }
 
     @RequestMapping("/gopy")
-    public String gopy() {
+    public String gopy(Model model) {
+        addMonHocListToModel(model);
         return "gopy";
     }
 
