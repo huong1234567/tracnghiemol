@@ -57,9 +57,40 @@ public class AdminController {
     }
 
     @RequestMapping("/qluser/update")
+<<<<<<< HEAD
     public String update(NguoiDung item) {
+=======
+    public String viewqldiem(NguoiDung item) {
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
         ndd.save(item);
         return "redirect:/qluser";
     }
 
+<<<<<<< HEAD
+=======
+    @RequestMapping("/qldiemad")
+    public String viewqldiem(Model model) {
+        return "qlDiemAdmin";
+    }
+
+    @RequestMapping("/qlmon")
+    public String view(Model model) {
+        return "qlMonThi";
+    }
+
+    @RequestMapping("/qldethi")
+    public String viewqlde(Model model) {
+        return "qldethi";
+    }
+
+    @RequestMapping("/qlthongke")
+    public String viewqlthongke(Model model) {
+        return "qlthongke";
+    }
+
+    @RequestMapping("/qlban")
+    public String viewqlban(Model model) {
+        return "qlban";
+    }
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 }

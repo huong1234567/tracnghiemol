@@ -311,4 +311,8 @@ public class controller {
         model.addAttribute("message", "Đổi mật khẩu thành công!");
         return "login";
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051

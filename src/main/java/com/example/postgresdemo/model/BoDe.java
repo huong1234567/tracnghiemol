@@ -17,17 +17,28 @@ import org.springframework.stereotype.Service;
 public class BoDe implements Serializable {
 
 	@Id
+<<<<<<< HEAD
 	@Column(columnDefinition = "nvarchar(255)")
 	String idBoDe;
 
 	@Column(columnDefinition = "nvarchar(255)")
+=======
+	@Column(columnDefinition = "varchar(255)")
+	String idBoDe;
+
+	@Column(columnDefinition = "varchar(255)")
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 	String idDe;
 
 	public BoDe(String idDe) {
 		this.idDe = idDe;
 	}
 
+<<<<<<< HEAD
 	@Column(columnDefinition = "nvarchar(255)")
+=======
+	@Column(columnDefinition = "varchar(255)")
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 	String tenDe;
 
 	@ManyToOne

@@ -2,7 +2,11 @@
 (function () {
 // Khai báo ứng dụng AngularJS
 var app = angular.module("myapp", ['ngSanitize']);
+<<<<<<< HEAD
 app.controller("myctrl", function ($scope, $http) {
+=======
+app.controller("myctrl", function ($scope) {
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 // Gán dữ liệu người dùng cho $scope
 
 var selectedTende = localStorage.getItem('selectetende');
@@ -71,6 +75,7 @@ window.location.href = localhostAddress;
 }
 
 
+<<<<<<< HEAD
 $scope.captureScreenshot = async function () {
 const canvas = await html2canvas(document.getElementById('quiz-form'));
 const imageData = canvas.toDataURL();
@@ -94,6 +99,21 @@ console.error('Error uploading screenshot:', error);
 function displayLink(imagePath) {
 $scope.imagePath = imagePath;
 }
+=======
+
+$scope.captureScreenshot = function () {
+html2canvas(document.getElementById('quiz-form')).then(function (canvas) {
+// Chuyển đổi canvas thành URL dữ liệu
+var imageDataUrl = canvas.toDataURL();
+
+// Tạo một cửa sổ hoặc tab mới để hiển thị ảnh
+var newWindow = window.open();
+newWindow.document.write('<img src="' + imageDataUrl + '" alt="Quiz Screenshot">');
+});
+};
+
+
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 
 
 

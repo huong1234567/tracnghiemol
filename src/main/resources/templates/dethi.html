@@ -46,6 +46,10 @@
 	</style>
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 </head>
 
 <body>
@@ -63,6 +67,7 @@
 				<!--ARTICLE ở đây -->
 				<div class="border box" style="background-color: #EEEEEE">
 
+<<<<<<< HEAD
 
 
 
@@ -72,6 +77,8 @@
 					<!-- Iterate over the search results -->
 
 
+=======
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 					<th:block th:if="${not #lists.isEmpty(boDeList)}">
 						<!-- Iterate over the boDeList -->
 						<th:block th:each="item : ${boDeList}">
@@ -97,8 +104,13 @@
 											<p class="col-sm-3">
 												<a href="/xacnhan" class="btn btn-warning"
 													th:attr="data-id=${item.idDe},data-ten=${item.tenDe},data-filemon=${item.monHoc.getFilemon()},data-thoigian=${item.monHoc.getThoigian()}"
+<<<<<<< HEAD
 													onclick="selectSubject(this.getAttribute('data-id'),this.getAttribute('data-ten'),this.getAttribute('data-filemon'),this.getAttribute('data-thoigian'))">Click
 													here</a>
+=======
+													onclick="selectSubject(this.getAttribute('data-id'),this.getAttribute('data-ten'),this.getAttribute('data-filemon'),this.getAttribute('data-thoigian'))">Xem
+													chi tiết</a>
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 											</p>
 
 
@@ -136,8 +148,13 @@
 											<p class="col-sm-3">
 												<a href="/xacnhan" class="btn btn-warning"
 													th:attr="data-id=${item.idDe},data-ten=${item.tenDe},data-filemon=${item.monHoc.getFilemon()},data-thoigian=${item.monHoc.getThoigian()}"
+<<<<<<< HEAD
 													onclick="selectSubject(this.getAttribute('data-id'),this.getAttribute('data-ten'),this.getAttribute('data-filemon'),this.getAttribute('data-thoigian'))">Click
 													here</a>
+=======
+													onclick="selectSubject(this.getAttribute('data-id'),this.getAttribute('data-ten'),this.getAttribute('data-filemon'),this.getAttribute('data-thoigian'))">Xem
+													chi tiết</a>
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 											</p>
 
 
@@ -148,6 +165,7 @@
 							</div>
 
 						</th:block>
+<<<<<<< HEAD
 					</th:block>
 
 
@@ -164,6 +182,14 @@
 
 
 
+=======
+						<th:block th:if="${#lists.isEmpty(search)}">
+							<p class="text-center text-danger mt-2">Không tìm thấy đề thi nào. Bạn thử gõ từ khoá
+								khác
+								liên quan hơn nhé!</p>
+						</th:block>
+					</th:block>
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 					<!-- <nav aria-label="...">
 						<ul class="pagination pagination-lg justify-content-center">
 							<li class="page-item disabled">
@@ -238,9 +264,18 @@
 		// Gọi hàm kiểm tra đăng nhập khi trang được tải
 		checkLoginStatus();
 
+<<<<<<< HEAD
 	</script>
 
 
+=======
+
+
+	</script>
+
+
+
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 </body>
 
 </html>

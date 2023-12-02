@@ -16,7 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+<<<<<<< HEAD
 import com.example.postgresdemo.dao.NguoiDungDAO;
+=======
+import com.example.postgresdemo.dao.MonHocDAO;
+import com.example.postgresdemo.dao.NguoiDungDAO;
+import com.example.postgresdemo.model.MonHoc;
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 import com.example.postgresdemo.model.NguoiDung;
 
 @Controller
@@ -25,8 +31,22 @@ public class userController {
     @Autowired
     NguoiDungDAO ndd;
 
+<<<<<<< HEAD
     @GetMapping("/qlthongtin")
     public String showUserInfo(Model model, HttpSession session) {
+=======
+    @Autowired
+    MonHocDAO mhdao;
+
+    private void addMonHocListToModel(Model model) {
+        List<MonHoc> monHocList = mhdao.findAll();
+        model.addAttribute("monHocList", monHocList);
+    }
+
+    @GetMapping("/qlthongtin")
+    public String showUserInfo(Model model, HttpSession session) {
+        addMonHocListToModel(model);
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
         NguoiDung user = (NguoiDung) session.getAttribute("nguoidung");
         if (user == null) {
             // Lấy user id từ session hoặc từ bất kỳ nguồn dữ liệu nào khác
@@ -83,4 +103,12 @@ public class userController {
 
         return "redirect:/qlthongtin";
     }
+<<<<<<< HEAD
+=======
+
+    @RequestMapping
+    public String qldiem() {
+        return "qlDiemUser";
+    }
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 }

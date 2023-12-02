@@ -48,7 +48,11 @@
 											class="img-fluid" alt="Sample image">
 									</div>
 									<div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
+<<<<<<< HEAD
 										<form method="POST" action="/login">
+=======
+										<form method="POST" action="/login" id="loginForm">
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 											<div
 												class="d-flex flex-row align-items-center justify-content-center justify-content-lg-start">
 												<p class="lead fw-normal mb-0 me-3">Đăng nhập với </p>
@@ -71,15 +75,24 @@
 											<div class="form-outline mb-4">
 												<input type="text" id="emailOrId" name="emailOrId"
 													class="form-control form-control"
+<<<<<<< HEAD
 													placeholder="Nhập tên đăng nhập hoặc Email" required />
+=======
+													placeholder="Nhập tên đăng nhập hoặc Email" />
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 											</div>
 
 											<!-- Password input -->
 											<div class="form-outline mb-3">
 
+<<<<<<< HEAD
 												<input type="password" id="form3Example4"
 													class="form-control form-control" name="matKhau"
 													placeholder="Nhập mật khẩu" required />
+=======
+												<input type="password" id="password" class="form-control form-control"
+													name="matKhau" placeholder="Nhập mật khẩu" required />
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 											</div>
 											<p th:if="${error}" class="error" th:text="${error}"></p>
 
@@ -87,11 +100,19 @@
 												<!-- Checkbox -->
 												<div class="form-check mb-0">
 													<input class="form-check-input me-2" type="checkbox" value=""
+<<<<<<< HEAD
 														id="form2Example3" /> <label class="form-check-label"
 														for="form2Example3">
 														Nhớ mật khẩu </label>
 												</div>
 												<a href="/quenmatkhau" class="text-body">Quên mật khẩu</a>
+=======
+														name="rememberMe" id="rememberMe" /> <label
+														class="form-check-label" for="rememberMe">
+														Nhớ mật khẩu </label>
+												</div>
+												<a href="#!" class="text-body">Quên mật khẩu</a>
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 											</div>
 
 											<div class="text-center text-lg-start mt-4 pt-2">
@@ -105,6 +126,45 @@
 											</div>
 
 										</form>
+<<<<<<< HEAD
+=======
+										<script>
+											document.addEventListener('DOMContentLoaded', function () {
+												const loginForm = document.getElementById('loginForm');
+												const rememberMeCheckbox = document.getElementById('rememberMe');
+												const emailOrIdInput = document.getElementById('emailOrId');
+												const passwordInput = document.getElementById('password');
+
+												// Kiểm tra xem có cookie "rememberMe" không
+												const rememberMeCookie = document.cookie.split('; ').find(cookie => cookie.startsWith('rememberMe='));
+
+												if (rememberMeCookie) {
+													// Nếu có, trích xuất thông tin đăng nhập từ cookie và điền vào ô input
+													rememberMeCheckbox.checked = true;
+
+													const rememberMeValue = rememberMeCookie.split('=')[1];
+													const [emailOrId, password] = rememberMeValue.split(':');
+
+													emailOrIdInput.value = emailOrId;
+													passwordInput.value = password;
+												}
+
+												// Thêm sự kiện để lưu thông tin đăng nhập vào cookie khi người dùng tích vào "Remember Me"
+												rememberMeCheckbox.addEventListener('change', function () {
+													if (rememberMeCheckbox.checked) {
+														const emailOrId = emailOrIdInput.value;
+														const password = passwordInput.value;
+
+														const rememberMeValue = `${emailOrId}:${password}`;
+														document.cookie = `rememberMe=${rememberMeValue}; path=/`;
+													} else {
+														// Nếu không được tích, xóa cookie "rememberMe"
+														document.cookie = 'rememberMe=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+													}
+												});
+											});
+										</script>
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 									</div>
 								</div>
 							</div>

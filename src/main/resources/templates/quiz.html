@@ -16,11 +16,14 @@
 		.red-text {
 			color: red;
 		}
+<<<<<<< HEAD
 
 		#link-container img {
 			width: 100%;
 			height: auto;
 		}
+=======
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 	</style>
 
 	<script>
@@ -79,7 +82,12 @@
 								<hr>
 
 								<div ng-repeat="sv in users.slice((currentPage-1)*50, currentPage*50)">
+<<<<<<< HEAD
 
+=======
+									<div class="text-justify"><b ng-bind-html="sv.para"><br></b></div>
+									<div><b ng-bind-html="sv.note"><br></b></div>
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 									<div ng-bind-html="sv.ten">{{sv.ten}}<br></div>
 									<div ng-if="sv.anh">
 										<img src="{{sv.anh}}"><br>
@@ -103,6 +111,7 @@
 										<img src="{{sv.da}}"><br>
 
 									</div>
+<<<<<<< HEAD
 									<div style="font-weight: bold" ng-model="sv.nd" ng-show="showExplanationnd"
 										ng-bind-html="sv.nd">
 										{{sv.nd}}</div>
@@ -113,6 +122,19 @@
 									ng-hide="!submitButtonVisible" />
 								<div id="link-container">
 									<img ng-src="{{imagePath}}" alt="Screenshot">
+=======
+									<div class="border bg-secondary text-success" ng-model="sv.nd"
+										ng-show="showExplanationnd" ng-bind-html="sv.nd">
+										{{sv.nd}}</div>
+								</div>
+								<div class="text-center mt-2 mb-3 text-white ">
+									<input class="btn btn-info" type="button" value="Nộp bài" ng-click="check()"
+										ng-hide="submitButtonVisible" />
+									<input class="btn btn-dark " type="button" value="Thoát" ng-click="exit()"
+										ng-hide="!submitButtonVisible" />
+									<input type="button" value="chụp màn hình" ng-click="captureScreenshot()"
+										ng-hide="!submitButtonVisible" />
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 								</div>
 							</form>
 						</div>

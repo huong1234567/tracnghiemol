@@ -37,6 +37,7 @@
             </ul>
         </div>
     </nav>
+<<<<<<< HEAD
     <div class="container">
         <h1 style="text-align: center; margin:10px 0 10px 0;">Quản Lý Thông Tin USER</h1>
 
@@ -47,27 +48,49 @@
             </div>
             <div class="col-sm-9">
                 <div class="form-group">
+=======
+    <div class="container border">
+        <h2 class="text-center col-sm-12 mt-2 mb-5 border bg-info text-white">Quản Lý Thông Tin Người Dùng</h2>
+        <form class="row form-horizontal" th:action="@{/qluser}" method="post" th:object="${item}">
+            <div class=" col-sm-4 avatar mb-3">
+                <img alt="" th:src="@{'/img/'+${item.images}}" style="width:250px;height:250px;">
+            </div>
+            <div class="col-sm-8">
+                <div class="form-group row">
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
                     <label class="control-label col-sm-2" for="idND">Id</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="idND" id="idND" placeholder="Nhập Id"
                             th:value="*{idND}">
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div class="form-group">
+=======
+                <div class="form-group row">
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
                     <label class="control-label col-sm-2" for="hoTen">Họ và tên</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" id="hoTen" name="hoTen" placeholder="Họ và tên"
                             th:value="*{hoTen}">
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div class="form-group">
+=======
+                <div class="form-group row">
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
                     <label class="control-label col-sm-2" for="soDienThoai">Số điện thoại</label>
                     <div class="col-sm-10">
                         <input type="text" class="form-control" name="soDienThoai" id="soDienThoai"
                             placeholder="Số điện thoại" th:value="*{soDienThoai}">
                     </div>
                 </div>
+<<<<<<< HEAD
                 <div class="form-group">
+=======
+                <div class="form-group row">
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
                     <label class="control-label col-sm-2" for="email">Email:</label>
                     <div class="col-sm-10">
                         <input type="email" class="form-control" id="email" name="email" placeholder="Nhập email"

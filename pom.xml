@@ -33,7 +33,11 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
+<<<<<<< HEAD
 		
+=======
+
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -74,6 +78,7 @@
 			<version>5.5.6.Final</version>
 		</dependency>
 		<dependency>
+<<<<<<< HEAD
         <groupId>javax.mail</groupId>
         <artifactId>javax.mail-api</artifactId>
         <version>1.6.2</version>
@@ -90,13 +95,49 @@
 		</dependencies>
 		
 		<!-- <dependency>
+=======
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+
+
+		<dependency>
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
 
+<<<<<<< HEAD
 	<dependencies>
+=======
+	<!-- <dependencies>
+		<dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>javax.mail-api</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-mail</artifactId>
+		</dependency>
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
@@ -136,6 +177,7 @@
 		</dependency>
 	</dependencies> -->
 
+<<<<<<< HEAD
 		<build>
 			<plugins>
 				<plugin>
@@ -147,3 +189,16 @@
 
 
 	</project>
+=======
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
+>>>>>>> 607c2686262ffd24ca57f232767c020fceb2d051
