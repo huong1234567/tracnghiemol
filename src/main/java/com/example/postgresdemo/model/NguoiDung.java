@@ -18,15 +18,15 @@ import org.springframework.web.multipart.MultipartFile;
 @Service
 public class NguoiDung implements Serializable {
     @Id
-    @Column(columnDefinition = "nvarchar(255)")
+    @Column(columnDefinition = "varchar(255)")
     String idND;
 
-    @Column(columnDefinition = "nvarchar(255)")
+    @Column(columnDefinition = "varchar(255)")
     String hoTen;
 
     String soDienThoai;
 
-    @Column(columnDefinition = "nvarchar(255)")
+    @Column(columnDefinition = "varchar(255)")
     String email;
 
     public NguoiDung(String idND, String hoTen, String soDienThoai, String email, String matKhau, boolean isAdmin,
@@ -99,10 +99,10 @@ public class NguoiDung implements Serializable {
     public NguoiDung() {
     }
 
-    @Column(columnDefinition = "nvarchar(255)")
+    @Column(columnDefinition = "varchar(255)")
     String matKhau;
     boolean isAdmin = false;
-    @Column(columnDefinition = "nvarchar(255)")
+    @Column(columnDefinition = "varchar(255)")
     String images;
     @Transient
     private MultipartFile imagesFile;

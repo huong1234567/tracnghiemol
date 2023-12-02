@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 public class Ban implements Serializable {
     @Id
     String idBan;
-    @Column(columnDefinition = "nvarchar(255)")
+    @Column(columnDefinition = "varchar(255)")
     String tenBan;
 
     public Ban() {
